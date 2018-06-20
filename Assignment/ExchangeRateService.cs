@@ -2,24 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assignment
 {
     public static class ExchangeRateService
     {
-        public static List<float> GetPreviousExchangeData(string fromCurrency, string toCurrency)
+        public static List<float> GetPreviousExchangeData(DateTime begindate,string fromCurrency, string toCurrency)
         {
-            var result = new List<float>();
-            var begindate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 15);
+            var result = new List<float>();           
 
-            if (DateTime.Today.Day < 15)
-            {
-                begindate = new DateTime(DateTime.Today.Year, DateTime.Today.Month - 1, 15);
-            }
+           
             for (int i = 0; i < 12; i++)
             {
                 result.Add(GetExchangeDataOfDay(begindate.AddMonths(-i), fromCurrency, toCurrency));
