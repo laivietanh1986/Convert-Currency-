@@ -37,7 +37,10 @@ namespace Assignment
         {
             var datas = ExchangeRateService.GetPreviousExchangeData(fromCurrency, toCurrency);
            
-            return Calculator.LinearRegression(datas);
+            var calc =   Calculator.LinearRegression(datas);
+            float a = calc.X; //  intercept
+            float b = calc.Y; //  slope
+            return a + b * 12;
         }       
 
     }
