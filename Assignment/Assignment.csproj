@@ -58,6 +58,10 @@
     <Compile Include="Validator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
