@@ -10,38 +10,17 @@ namespace Assignment
     {
         public static DataPoint LinearRegression(DataPoint[]data)
         {
-
-            int I = 0;
-
-            float SumX = 0;
+            DataPoint RetPt;          
             
-            float SumY = 0;
+            var SumX = data.Sum(dt => dt.X);
+            var SumY = data.Sum(dt => dt.Y);
+            var SumX2 = data.Sum(dt => dt.X * dt.X);
+            var SumXY = data.Sum(dt => dt.X * dt.Y);
+            var D = (data.Length * SumX2) - (SumX * SumX);
             
-            float SumX2 = 0;
-            
-            float SumXY = 0;
-            
-            float D = 0;
+            RetPt.X = ((SumY * SumX2) - (SumXY * SumX)) / D; //Intercept
 
-            DataPoint RetPt;
-
-            for (I = 0; I < data.Length; I++)
-            {
-
-                SumX += data[I].X;
-
-                SumY += data[I].Y;
-
-                SumX2 += data[I].X * data[I].X;
-
-                SumXY += data[I].X * data[I].Y;
-            }
-
-            D = data.Length * SumX2 - SumX * SumX;
-
-            RetPt.X = (SumY * SumX2 - SumXY * SumX) / D; //Intercept
-
-            RetPt.Y = (data.Length * SumXY - SumY * SumX) / D; //Slope
+            RetPt.Y = ((data.Length * SumXY) - (SumY * SumX)) / D; //Slope
 
             return RetPt;
         }

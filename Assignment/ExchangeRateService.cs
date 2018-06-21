@@ -8,21 +8,17 @@ namespace Assignment
 {
     public static class ExchangeRateService
     {
-        public static DataPoint[] GetPreviousExchangeData(string fromCurrency, string toCurrency)
+        
+        public static DataPoint[] GetPreviousExchangeData(DateTime begindate,string fromCurrency, string toCurrency)
         {
             var result = new List<DataPoint>();
-            var begindate = new DateTime(DateTime.Today.Year, DateTime.Today.AddMonths(12).Month, 15);
-
-            if (DateTime.Today.Day < 15)
-            {
-                begindate = new DateTime(DateTime.Today.Year, DateTime.Today.AddMonths(13).Month, 15);
-            }
+           
             for (int i = 0; i < 12; i++)
             {
                 result.Add(new DataPoint()
                 {
                     X = GetExchangeDataOfDay(begindate.AddMonths(i), fromCurrency, toCurrency),
-                    Y = i
+                    Y = i+1
                 });
             }
 

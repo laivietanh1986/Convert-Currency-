@@ -28,7 +28,7 @@ namespace Assignment.Test
             var fromCurrency = "USD";
             var toCurrency = "VND";
             var result = ExchangeRateService.GetPreviousExchangeData(date,fromCurrency, toCurrency);
-            Assert.AreEqual(result.Count, 12);
+            Assert.AreEqual(result.Length, 12);
         }
     }
 }

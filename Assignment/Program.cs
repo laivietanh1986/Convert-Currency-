@@ -45,17 +45,19 @@ namespace Assignment
 
         private static float CalculatePredictExchange(string fromCurrency, string toCurrency)
         {
-            var begindate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 15);
-            if (begindate.Day < 15)
+            var begindate = new DateTime(DateTime.Today.AddMonths(-11).Year, DateTime.Today.AddMonths(-11).Month, 15);
+
+            if (DateTime.Today.Day < 15)
             {
-                begindate = new DateTime(DateTime.Today.Year, DateTime.Today.Month - 1, 15);
+                begindate = new DateTime(DateTime.Today.AddMonths(-12).Year, DateTime.Today.AddMonths(-12).Month, 15);
             }
+          
             var datas = ExchangeRateService.GetPreviousExchangeData(begindate,fromCurrency, toCurrency);
            
             var calc =   Calculator.LinearRegression(datas);
             float a = calc.X; //  intercept
             float b = calc.Y; //  slope
-            return a + b * 12;
+            return a + b * 13;
         }       
 
     }
