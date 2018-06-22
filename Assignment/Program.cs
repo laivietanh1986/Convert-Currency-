@@ -23,8 +23,9 @@ namespace Assignment
 
                 if (Validator.IsValid(fromCurrency, toCurrency))
                 {
-                    decimal predictExchange = CalculatePredictExchange(fromCurrency.ToUpper(), toCurrency.ToUpper());
-                    Console.WriteLine($"The predicted currency exchange from {fromCurrency} to {toCurrency}for 15/1/2017 is {(predictExchange.ToString("")).ToString()}");
+                    var calculateDate = new DateTime(2017, 1, 15);
+                    decimal predictExchange = CalculatePredictExchange(fromCurrency.ToUpper(), toCurrency.ToUpper(), calculateDate);
+                    Console.WriteLine($"The predicted currency exchange from {fromCurrency} to {toCurrency} for 15/1/2017 is {(predictExchange.ToString("")).ToString()}");
                 }
                 else
                 {
@@ -43,13 +44,13 @@ namespace Assignment
 
         }
 
-        private static decimal CalculatePredictExchange(string fromCurrency, string toCurrency)
+        private static decimal CalculatePredictExchange(string fromCurrency, string toCurrency,DateTime date)
         {
-            var begindate = new DateTime(DateTime.Today.AddMonths(-11).Year, DateTime.Today.AddMonths(-11).Month, 15);
+            var begindate = new DateTime(date.AddMonths(-11).Year, date.AddMonths(-11).Month, 15);
 
-            if (DateTime.Today.Day < 15)
+            if (date.Day < 15)
             {
-                begindate = new DateTime(DateTime.Today.AddMonths(-12).Year, DateTime.Today.AddMonths(-12).Month, 15);
+                begindate = new DateTime(date.AddMonths(-12).Year, date.AddMonths(-12).Month, 15);
             }
           
             var datas = ExchangeRateService.GetPreviousExchangeData(begindate,fromCurrency, toCurrency);
