@@ -21,13 +21,13 @@ namespace Assignment.Test
                 
             };
             var result = Calculator.LinearRegression(data.ToArray());
-            var esp1 = Math.Abs(result.X - 65.1416);
-            var esp2 = Math.Abs(result.Y - 0.385225);
+            var esp1 = Math.Abs(result.X - 65.1416m);
+            var esp2 = Math.Abs(result.Y - 0.385225m);
 
             Assert.IsTrue(esp1>=0);
-            Assert.IsTrue(esp1<=0.1);
+            Assert.IsTrue(esp1<=0.1m);
             Assert.IsTrue(esp2>=0);
-            Assert.IsTrue(esp2<=0.1);
+            Assert.IsTrue(esp2<=0.1m);
 
         }
         [TestMethod]
@@ -43,12 +43,12 @@ namespace Assignment.Test
             };
             var result = Calculator.LinearRegression(data.ToArray());
             var esp1 = Math.Abs(result.X -10);
-            var esp2 = Math.Abs(result.Y - 0.5);
+            var esp2 = Math.Abs(result.Y - 0.5m);
 
             Assert.IsTrue(esp1 >= 0);
-            Assert.IsTrue(esp1 <= 0.1);
+            Assert.IsTrue(esp1 <= 0.1m);
             Assert.IsTrue(esp2 >= 0);
-            Assert.IsTrue(esp2 <= 0.1);
+            Assert.IsTrue(esp2 <= 0.1m);
 
 
 

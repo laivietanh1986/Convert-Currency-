@@ -9,8 +9,8 @@ namespace Assignment
     public struct DataPoint
     {
 
-        public float X;
+        public decimal X;
 
-        public float Y;
+        public decimal Y;
     }
 }

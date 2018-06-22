@@ -23,8 +23,8 @@ namespace Assignment
 
                 if (Validator.IsValid(fromCurrency, toCurrency))
                 {
-                    float predictExchange = CalculatePredictExchange(fromCurrency.ToUpper(), toCurrency.ToUpper());
-                    Console.WriteLine($"The predicted currency exchange from {fromCurrency} to {toCurrency}for 15/1/2017 is {predictExchange}");
+                    decimal predictExchange = CalculatePredictExchange(fromCurrency.ToUpper(), toCurrency.ToUpper());
+                    Console.WriteLine($"The predicted currency exchange from {fromCurrency} to {toCurrency}for 15/1/2017 is {(predictExchange.ToString("")).ToString()}");
                 }
                 else
                 {
@@ -43,7 +43,7 @@ namespace Assignment
 
         }
 
-        private static float CalculatePredictExchange(string fromCurrency, string toCurrency)
+        private static decimal CalculatePredictExchange(string fromCurrency, string toCurrency)
         {
             var begindate = new DateTime(DateTime.Today.AddMonths(-11).Year, DateTime.Today.AddMonths(-11).Month, 15);
 
@@ -55,8 +55,8 @@ namespace Assignment
             var datas = ExchangeRateService.GetPreviousExchangeData(begindate,fromCurrency, toCurrency);
            
             var calc =   Calculator.LinearRegression(datas);
-            float a = calc.X; //  intercept
-            float b = calc.Y; //  slope
+            decimal a = calc.X; //  intercept
+            decimal b = calc.Y; //  slope
             return a + b * 13;
         }       
 

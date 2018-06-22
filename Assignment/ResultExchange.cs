@@ -12,6 +12,6 @@ namespace Assignment
         public string license { get; set; }
         public int timestamp { get; set; }
         public string _base { get; set; }
-        public Dictionary<string, float> rates { get; set; }
+        public Dictionary<string, decimal> rates { get; set; }
     }
 }
